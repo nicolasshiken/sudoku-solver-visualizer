@@ -1,65 +1,104 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { solve } from "../functions/solve";
+import { useState } from "react";
+import { renderChanges, renderBoard } from "../functions/renderChanges";
+import BoardItem from "../components/BoardItem";
+import Options from "../components/Options";
+import Nav from "../components/Nav";
 
 export default function Home() {
+  /*   const currentBoard = [
+    [7, 8, 0, 4, 0, 0, 1, 2, 0],
+    [6, 0, 0, 0, 7, 5, 0, 0, 9],
+    [0, 0, 0, 6, 0, 1, 0, 7, 8],
+    [0, 0, 7, 0, 4, 0, 2, 6, 0],
+    [0, 0, 1, 0, 5, 0, 9, 3, 0],
+    [9, 0, 4, 0, 6, 0, 0, 0, 5],
+    [0, 7, 0, 3, 0, 0, 0, 1, 2],
+    [1, 2, 0, 0, 0, 7, 4, 0, 0],
+    [0, 4, 9, 2, 0, 6, 0, 0, 7],
+  ]; */
+
+  const currentBoard = [
+    [0, 1, 0, 0, 8, 5, 0, 6, 0],
+    [4, 0, 0, 3, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 9, 0, 0],
+    [0, 3, 0, 0, 0, 0, 0, 0, 1],
+    [8, 0, 1, 4, 0, 0, 0, 5, 0],
+    [6, 0, 0, 0, 0, 0, 2, 0, 0],
+    [2, 5, 0, 0, 9, 0, 0, 4, 0],
+    [0, 6, 0, 0, 0, 7, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 8, 6],
+  ];
+
+  const [renderedBoard, setRenderedBoard] = useState(renderBoard(currentBoard));
+  const [test, setTest] = useState(false);
+  const [solved, setSolved] = useState(false);
+  const [speed, setSpeed] = useState(50);
+
+  const handleReset = () => {
+    setSolved(false);
+    setRenderedBoard(renderBoard(currentBoard));
+  };
+
+  const handleSolve = async () => {
+    /*     const changes = solve(
+      [
+        [7, 8, 0, 4, 0, 0, 1, 2, 0],
+        [6, 0, 0, 0, 7, 5, 0, 0, 9],
+        [0, 0, 0, 6, 0, 1, 0, 7, 8],
+        [0, 0, 7, 0, 4, 0, 2, 6, 0],
+        [0, 0, 1, 0, 5, 0, 9, 3, 0],
+        [9, 0, 4, 0, 6, 0, 0, 0, 5],
+        [0, 7, 0, 3, 0, 0, 0, 1, 2],
+        [1, 2, 0, 0, 0, 7, 4, 0, 0],
+        [0, 4, 9, 2, 0, 6, 0, 0, 7],
+      ],
+      []
+    ); */
+    const changes = await solve(
+      [
+        [0, 1, 0, 0, 8, 5, 0, 6, 0],
+        [4, 0, 0, 3, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 0, 9, 0, 0],
+        [0, 3, 0, 0, 0, 0, 0, 0, 1],
+        [8, 0, 1, 4, 0, 0, 0, 5, 0],
+        [6, 0, 0, 0, 0, 0, 2, 0, 0],
+        [2, 5, 0, 0, 9, 0, 0, 4, 0],
+        [0, 6, 0, 0, 0, 7, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 8, 6],
+      ],
+      []
+    );
+    renderChanges(changes, renderedBoard, setTest, speed);
+    setSolved(true);
+  };
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+    <>
+      <Nav />
+      <Options
+        solved={solved}
+        handleReset={handleReset}
+        handleSolve={handleSolve}
+        setSpeed={setSpeed}
+      />
+      <div className="board">
+        {renderedBoard.map((row) =>
+          row.map((item, idx) => {
+            const { position, isValid, isZero, value, isInitial } = item;
+            return (
+              <BoardItem
+                key={idx}
+                position={position}
+                isValid={isValid}
+                isZero={isZero}
+                value={value}
+                isInitial={isInitial}
+              />
+            );
+          })
+        )}
+      </div>
+    </>
+  );
 }
