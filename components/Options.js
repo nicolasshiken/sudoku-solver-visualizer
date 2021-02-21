@@ -6,7 +6,7 @@ const Options = ({ solved, handleReset, handleSolve, setSpeed }) => {
   return (
     <div className="options">
       <div className="speed">
-        <label htmlFor="speed">Velocidad:</label>
+        <label htmlFor="speed">Speed:</label>
         <select
           disabled={solved}
           name="speed"
@@ -14,19 +14,19 @@ const Options = ({ solved, handleReset, handleSolve, setSpeed }) => {
           defaultValue="50"
           onChange={handleChange}
         >
-          <option value="75">Lento</option>
+          <option value="75">Slow</option>
           <option value="50">Regular</option>
-          <option value="25">Rapido</option>
-          <option value="0">Instantaneo</option>
+          <option value="25">Fast</option>
+          <option value="0">Instant</option>
         </select>
       </div>
       {!solved ? (
         <button className="solve-button" onClick={() => handleSolve()}>
-          Resolver
+          Solve
         </button>
       ) : (
         <button className="solve-button" onClick={handleReset}>
-          Cancelar
+          Cancel
         </button>
       )}
     </div>

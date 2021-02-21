@@ -41,13 +41,11 @@ body {
       -ms-flex-align: center;
           align-items: center;
   min-height: 100vh;
-  max-width: 600px;
+  width: auto;
   margin: auto;
 }
 
 nav {
-  position: absolute;
-  top: 0;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -61,6 +59,9 @@ nav {
   background-color: var(--clr-primary);
   color: white;
   font-size: 1.5rem;
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 nav .nav-container {
@@ -125,6 +126,7 @@ nav .nav-links li a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 1rem;
 }
 
 nav .nav-links li a svg {
@@ -146,6 +148,8 @@ nav .nav-links li:hover {
     position: absolute;
     top: 100%;
     right: 0;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     background-color: var(--clr-primary);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -169,15 +173,21 @@ nav .nav-links li:hover {
   position: relative;
   display: -ms-grid;
   display: grid;
-  height: 600px;
-  max-height: 90vw;
-  width: 600px;
-  max-width: 90vw;
+  height: 400px;
+  width: 400px;
   -ms-grid-rows: (1fr)[9];
       grid-template-rows: repeat(9, 1fr);
   -ms-grid-columns: (1fr)[9];
       grid-template-columns: repeat(9, 1fr);
   gap: 5px;
+  margin-bottom: auto;
+}
+
+@media (orientation: portrait) {
+  .board {
+    max-width: 80vw;
+    max-height: 80vw;
+  }
 }
 
 .board-item {
@@ -215,21 +225,6 @@ nav .nav-links li:hover {
   z-index: -1;
 }
 
-/* .top {
-  border-bottom: 4px solid white;
-}
-
-.bottom {
-  border-top: 4px solid white;
-}
-
-.left {
-  border-right: 4px solid white;
-}
-
-.right {
-  border-left: 4px solid white;
-} */
 .title {
   font-size: 4rem;
   text-align: center;
@@ -237,7 +232,6 @@ nav .nav-links li:hover {
 
 .invalid {
   background-color: var(--clr-terciary);
-  /* animation: rotate 250ms infinite; */
 }
 
 .initial {
@@ -248,37 +242,7 @@ nav .nav-links li:hover {
   background-color: grey;
 }
 
-@-webkit-keyframes rotate {
-  0% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-  50% {
-    -webkit-transform: rotateZ(180deg);
-            transform: rotateZ(180deg);
-  }
-  100% {
-    -webkit-transform: rotateZ(360deg);
-            transform: rotateZ(360deg);
-  }
-}
-
-@keyframes rotate {
-  0% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-  50% {
-    -webkit-transform: rotateZ(180deg);
-            transform: rotateZ(180deg);
-  }
-  100% {
-    -webkit-transform: rotateZ(360deg);
-            transform: rotateZ(360deg);
-  }
-}
-
-.pepito:before {
+.current:before {
   content: "";
   position: absolute;
   top: 0;
@@ -328,17 +292,24 @@ nav .nav-links li:hover {
 }
 
 .options {
-  margin: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 400px;
+  margin-bottom: 1rem;
+  margin-top: auto;
+}
+
+@media (orientation: portrait) {
+  .options {
+    max-width: 80vw;
+  }
 }
 
 .speed {
@@ -355,15 +326,16 @@ nav .nav-links li:hover {
   height: 2rem;
   width: auto;
   border: 2px solid black;
+  cursor: pointer;
 }
 
 .solve-button {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border: none;
-  font-size: 1.2rem;
   font-weight: bold;
   background-color: var(--clr-secondary);
   color: white;
   border-radius: 5px;
+  cursor: pointer;
 }
 /*# sourceMappingURL=globals.css.map */

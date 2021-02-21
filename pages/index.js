@@ -6,7 +6,7 @@ import Options from "../components/Options";
 import Nav from "../components/Nav";
 
 export default function Home() {
-  /*   const currentBoard = [
+  const currentBoard = [
     [7, 8, 0, 4, 0, 0, 1, 2, 0],
     [6, 0, 0, 0, 7, 5, 0, 0, 9],
     [0, 0, 0, 6, 0, 1, 0, 7, 8],
@@ -16,18 +16,6 @@ export default function Home() {
     [0, 7, 0, 3, 0, 0, 0, 1, 2],
     [1, 2, 0, 0, 0, 7, 4, 0, 0],
     [0, 4, 9, 2, 0, 6, 0, 0, 7],
-  ]; */
-
-  const currentBoard = [
-    [0, 1, 0, 0, 8, 5, 0, 6, 0],
-    [4, 0, 0, 3, 0, 0, 0, 0, 0],
-    [0, 0, 0, 1, 0, 0, 9, 0, 0],
-    [0, 3, 0, 0, 0, 0, 0, 0, 1],
-    [8, 0, 1, 4, 0, 0, 0, 5, 0],
-    [6, 0, 0, 0, 0, 0, 2, 0, 0],
-    [2, 5, 0, 0, 9, 0, 0, 4, 0],
-    [0, 6, 0, 0, 0, 7, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 8, 6],
   ];
 
   const [renderedBoard, setRenderedBoard] = useState(renderBoard(currentBoard));
@@ -41,7 +29,7 @@ export default function Home() {
   };
 
   const handleSolve = async () => {
-    /*     const changes = solve(
+    const changes = solve(
       [
         [7, 8, 0, 4, 0, 0, 1, 2, 0],
         [6, 0, 0, 0, 7, 5, 0, 0, 9],
@@ -54,21 +42,8 @@ export default function Home() {
         [0, 4, 9, 2, 0, 6, 0, 0, 7],
       ],
       []
-    ); */
-    const changes = await solve(
-      [
-        [0, 1, 0, 0, 8, 5, 0, 6, 0],
-        [4, 0, 0, 3, 0, 0, 0, 0, 0],
-        [0, 0, 0, 1, 0, 0, 9, 0, 0],
-        [0, 3, 0, 0, 0, 0, 0, 0, 1],
-        [8, 0, 1, 4, 0, 0, 0, 5, 0],
-        [6, 0, 0, 0, 0, 0, 2, 0, 0],
-        [2, 5, 0, 0, 9, 0, 0, 4, 0],
-        [0, 6, 0, 0, 0, 7, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 8, 6],
-      ],
-      []
     );
+
     renderChanges(changes, renderedBoard, setTest, speed);
     setSolved(true);
   };

@@ -36,14 +36,12 @@ body {
   align-items: center;
 
   min-height: 100vh;
-  max-width: 600px;
+  width: auto;
 
   margin: auto;
 }
 
 nav {
-  position: absolute;
-  top: 0;
   width: 100%;
 
   display: flex;
@@ -53,6 +51,10 @@ nav {
   background-color: var(--clr-primary);
   color: white;
   font-size: 1.5rem;
+
+  box-shadow: 0 0 15px rgba(black, 0.5);
+
+  z-index: 1;
 
   .nav-container {
     position: relative;
@@ -95,6 +97,8 @@ nav {
         justify-content: center;
         align-items: center;
 
+        font-size: 1rem;
+
         svg {
           margin-left: 0.5rem;
         }
@@ -114,6 +118,8 @@ nav {
       position: absolute;
       top: 100%;
       right: 0;
+
+      box-shadow: 0 0 15px rgba(black, 0.5);
 
       background-color: var(--clr-primary);
 
@@ -138,14 +144,19 @@ nav {
   position: relative;
   display: grid;
 
-  height: 600px;
-  max-height: 90vw;
-  width: 600px;
-  max-width: 90vw;
+  height: 400px;
+  width: 400px;
 
   grid-template-rows: repeat(9, 1fr);
   grid-template-columns: repeat(9, 1fr);
   gap: 5px;
+
+  margin-bottom: auto;
+
+  @media (orientation: portrait) {
+    max-width: 80vw;
+    max-height: 80vw;
+  }
 }
 
 .board-item {
@@ -179,22 +190,6 @@ nav {
   z-index: -1;
 }
 
-/* .top {
-  border-bottom: 4px solid white;
-}
-
-.bottom {
-  border-top: 4px solid white;
-}
-
-.left {
-  border-right: 4px solid white;
-}
-
-.right {
-  border-left: 4px solid white;
-} */
-
 .title {
   font-size: 4rem;
   text-align: center;
@@ -202,7 +197,6 @@ nav {
 
 .invalid {
   background-color: var(--clr-terciary);
-  /* animation: rotate 250ms infinite; */
 }
 
 .initial {
@@ -213,19 +207,7 @@ nav {
   background-color: grey;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotateZ(0deg);
-  }
-  50% {
-    transform: rotateZ(180deg);
-  }
-  100% {
-    transform: rotateZ(360deg);
-  }
-}
-
-.pepito:before {
+.current:before {
   content: "";
   position: absolute;
   top: 0;
@@ -253,11 +235,17 @@ nav {
 }
 
 .options {
-  margin: 1rem;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 400px;
+
+  margin-bottom: 1rem;
+  margin-top: auto;
+
+  @media (orientation: portrait) {
+    max-width: 80vw;
+  }
 }
 
 .speed {
@@ -268,16 +256,19 @@ nav {
     height: 2rem;
     width: auto;
     border: 2px solid black;
+
+    cursor: pointer;
   }
 }
 
 .solve-button {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border: none;
 
-  font-size: 1.2rem;
   font-weight: bold;
   background-color: var(--clr-secondary);
   color: white;
   border-radius: 5px;
+
+  cursor: pointer;
 }

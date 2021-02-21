@@ -9,9 +9,9 @@ const BoardItem = ({ isValid, value, isZero, position, isInitial }) => {
     position[1] === 0 || position[1] === 3 || position[1] === 6 ? true : false;
 
   const className = `board-item 
-    ${!isValid ? "invalid pepito" : undefined} 
+    ${!isValid ? "invalid current" : undefined} 
     ${isZero ? "zero" : undefined}
-    ${isValid && !isInitial && !isZero ? "pepito" : undefined}
+    ${isValid && !isInitial && !isZero ? "current" : undefined}
     ${isTop ? "top" : undefined}
     ${isBottom ? "bottom" : undefined}
     ${isLeft ? "left" : undefined}
