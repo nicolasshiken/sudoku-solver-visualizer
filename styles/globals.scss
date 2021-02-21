@@ -12,6 +12,8 @@
   --clr-secondary: #5d5473;
 
   --clr-terciary: #82bf88;
+
+  --width: 500px;
 }
 
 html {
@@ -144,8 +146,8 @@ nav {
   position: relative;
   display: grid;
 
-  height: 400px;
-  width: 400px;
+  height: var(--width);
+  width: var(--width);
 
   grid-template-rows: repeat(9, 1fr);
   grid-template-columns: repeat(9, 1fr);
@@ -238,7 +240,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  width: 400px;
+  width: var(--width);
 
   margin-bottom: 1rem;
   margin-top: auto;
@@ -262,12 +264,13 @@ nav {
 }
 
 .solve-button {
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
   border: none;
 
   font-weight: bold;
   background-color: var(--clr-secondary);
   color: white;
+  font-size: 1rem;
   border-radius: 5px;
 
   cursor: pointer;
